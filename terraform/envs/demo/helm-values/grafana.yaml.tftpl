@@ -1,0 +1,35 @@
+replicas: 1
+
+adminUser: admin
+adminPassword: "${grafana_admin_password}"
+
+service:
+  type: ClusterIP
+
+persistence:
+  enabled: false
+
+resources:
+  limits:
+    memory: 512Mi
+  requests:
+    cpu: 100m
+    memory: 256Mi
+
+datasources:
+  datasources.yaml:
+    apiVersion: 1
+    datasources:
+      - name: Prometheus
+        type: prometheus
+        url: http://${prometheus_url}
+        access: proxy
+        isDefault: true
+      - name: Loki
+        type: loki
+        url: http://${loki_url}
+        access: proxy
+      - name: Tempo
+        type: tempo
+        url: http://${tempo_url}
+        access: proxy

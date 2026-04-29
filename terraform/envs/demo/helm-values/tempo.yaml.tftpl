@@ -1,0 +1,25 @@
+fullnameOverride: tempo
+
+serviceAccount:
+  create: true
+  name: ${tempo_service_account}
+
+tempo:
+  repository: grafana/tempo
+  tag: "2.5.0"
+  resources:
+    limits:
+      memory: 768Mi
+    requests:
+      cpu: 100m
+      memory: 512Mi
+  memBallastSizeMbs: 256
+  metricsGenerator:
+    enabled: false
+  storage:
+    trace:
+      backend: s3
+      s3:
+        bucket: ${tempo_bucket}
+        endpoint: s3.${aws_region}.amazonaws.com
+        region: ${aws_region}

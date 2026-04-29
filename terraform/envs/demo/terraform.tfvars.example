@@ -1,0 +1,16 @@
+# Optional — defaults already target a minimal single-node portfolio demo.
+# Copy to terraform.tfvars (gitignored) to override.
+
+# aws_region   = "us-east-1"
+# project_name = "obs-demo"
+
+# Strongly recommended for real S3 names in shared regions:
+# s3_name_prefix = "youralias-obs"
+# s3_suffix      = "fixed01"
+
+# Even smaller (may OOM if you re-enable heavy charts):
+# node_instance_types = ["t3.medium"]
+# node_desired_size   = 1
+
+# Infra only (no Helm):
+# install_kubernetes_apps = false
